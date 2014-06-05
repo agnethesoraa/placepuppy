@@ -1,6 +1,5 @@
 from flask import Flask, render_template, make_response
-from PIL import Image
-import StringIO
+from image_helpers import create_image
 app = Flask(__name__)
 
 
@@ -12,11 +11,7 @@ def index():
 @app.route('/<width>x<height>')
 @app.route('/<width>X<height>')
 def serve_image(width, height):
-    stringfile = StringIO.StringIO()
-    im = Image.open("static/images/annie.jpg")
-    im.thumbnail((int(width), int(height)), Image.ANTIALIAS)
-    im = im.crop((0, 0, int(width), int(height)))
-    im.save(stringfile, 'JPEG')
+    stringfile = create_image(width, height)
     response = make_response(stringfile.getvalue())
     response.headers["Content-Type"] = "image/jpeg"
     return response
