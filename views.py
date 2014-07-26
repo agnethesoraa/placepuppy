@@ -10,6 +10,8 @@ def index():
 
 @app.route('/<width>x<height>')
 @app.route('/<width>X<height>')
+@app.route('/<width>x<height>/')
+@app.route('/<width>X<height>/')
 def serve_image(width, height):
     stringfile = create_image(width, height)
     response = make_response(stringfile.getvalue())
