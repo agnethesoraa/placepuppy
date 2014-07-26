@@ -26,18 +26,23 @@ def is_landscape(width, height):
 
 
 def list_squares():
-    return ["puppies/squares/S001.jpg", "puppies/squares/S002.jpg",
-            "puppies/squares/S003.jpg"]
+    return list_files("puppies/squares")
 
 
 def list_portraits():
-    return ["puppies/portraits/P001.jpg", "puppies/portraits/P002.jpg",
-            "puppies/portraits/P003.jpg"]
+    return list_files("puppies/portraits")
 
 
 def list_landscapes():
-    return ["puppies/landscapes/L001.jpg", "puppies/landscapes/L002.jpg",
-            "puppies/landscapes/L003.jpg"]
+    return list_files("puppies/landscapes")
+
+
+def list_files(path):
+    images = []
+    for filename in os.listdir(path):
+        if filename.endswith(".jpg"):
+            images.append(path + "/" + filename)
+    return images
 
 
 def choose_image(width, height):
