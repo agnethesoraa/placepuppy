@@ -40,8 +40,9 @@ def list_landscapes():
 
 def choose_image(width, height):
     if is_portrait(width, height):
-        return list_portraits()[0]
+        images = list_portraits()
     elif is_square(width, height):
-        return list_squares()[0]
+        images = list_squares()
     elif is_landscape(width, height):
-        return list_landscapes()[0]
+        images = list_landscapes()
+    return images[0]
