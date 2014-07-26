@@ -1,5 +1,7 @@
 from PIL import Image
 import StringIO
+import random
+import os
 
 
 def create_image(width, height):
@@ -45,4 +47,4 @@ def choose_image(width, height):
         images = list_squares()
     elif is_landscape(width, height):
         images = list_landscapes()
-    return images[0]
+    return random.choice(images)
