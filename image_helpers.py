@@ -15,6 +15,16 @@ def create_image(width, height):
     return stringfile
 
 
+def choose_image(width, height):
+    if is_portrait(width, height):
+        images = list_portraits()
+    elif is_square(width, height):
+        images = list_squares()
+    elif is_landscape(width, height):
+        images = list_landscapes()
+    return random.choice(images)
+
+
 def is_portrait(width, height):
     return height > width
 
@@ -46,13 +56,3 @@ def list_files(path):
         if filename.endswith(".jpg"):
             images.append(path + "/" + filename)
     return images
-
-
-def choose_image(width, height):
-    if is_portrait(width, height):
-        images = list_portraits()
-    elif is_square(width, height):
-        images = list_squares()
-    elif is_landscape(width, height):
-        images = list_landscapes()
-    return random.choice(images)
