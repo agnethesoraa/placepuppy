@@ -1,6 +1,10 @@
 from flask import Flask, render_template, make_response
+
 from image_helpers import create_image
+from cache import cache
+
 app = Flask(__name__)
+cache.init_app(app)
 
 
 @app.route('/')
