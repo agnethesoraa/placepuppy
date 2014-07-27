@@ -42,7 +42,6 @@ def list_landscapes():
 @cache.memoize()
 def list_files(path):
     images = []
-    print path
     for filename in os.listdir(path):
         if filename.endswith(".jpg"):
             images.append(path + "/" + filename)

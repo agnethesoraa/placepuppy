@@ -1,4 +1,4 @@
 from flask.ext.cache import Cache
 
-
-cache = Cache(config={'CACHE_TYPE': 'simple'})
+config = {'CACHE_TYPE': 'simple'}
+cache = Cache(config=config)
