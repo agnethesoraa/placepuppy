@@ -6,7 +6,7 @@ import os
 from cache import cache
 
 
-def create_image(width, height, image_filter):
+def create_image(width, height, image_filter=None):
     stringfile = StringIO.StringIO()
     im = Image.open(choose_image(width, height))
     resize(im, width, height)
