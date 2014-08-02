@@ -6,11 +6,13 @@ import os
 from cache import cache
 
 
-def create_image(width, height):
+def create_image(width, height, image_filter):
     stringfile = StringIO.StringIO()
     im = Image.open(choose_image(width, height))
     resize(im, width, height)
     im = im.crop((0, 0, int(width), int(height)))
+    if image_filter:
+        im = image_filter(im)
     im.save(stringfile, 'JPEG')
     return stringfile
 
@@ -35,7 +37,7 @@ def resize(im, width, height):
     elif ratio_im > ratio_box:
         height_box = width_box * ratio_im
 
-    im.thumbnail((width_box, height_box), Image.ANTIALIAS)
+    im.thumbnail((int(width_box), int(height_box)), Image.ANTIALIAS)
     return im
 
 
