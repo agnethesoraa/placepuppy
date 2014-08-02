@@ -17,7 +17,7 @@ def index():
 @app.route('/<width>x<height>/')
 @app.route('/<width>X<height>/')
 def serve_image(width, height):
-    stringfile = create_image(width, height)
+    stringfile = create_image(int(width), int(height))
     response = make_response(stringfile.getvalue())
     response.headers["Content-Type"] = "image/jpeg"
     return response
