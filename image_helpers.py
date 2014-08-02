@@ -10,7 +10,7 @@ def create_image(width, height, image_filter):
     stringfile = StringIO.StringIO()
     im = Image.open(choose_image(width, height))
     resize(im, width, height)
-    im = im.crop((0, 0, int(width), int(height)))
+    im = crop_image(im, width, height)
     if image_filter:
         im = image_filter(im)
     im.save(stringfile, 'JPEG')
@@ -39,6 +39,12 @@ def resize(im, width, height):
 
     im.thumbnail((int(width_box), int(height_box)), Image.ANTIALIAS)
     return im
+
+
+def crop_image(im, width, height):
+    x = (im.size[0] - width) / 2
+    y = (im.size[1] - height) / 2
+    return im.crop((x, y, int(width) + x, int(height) + y))
 
 
 def calculate_ratio(size):
