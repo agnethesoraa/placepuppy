@@ -27,7 +27,7 @@ def test_resize_ratio_box_bigger_than_ratio_im():
     im = Image.open('static/images/annie.jpg')
     resized_im = resize(im, width, height)
     assert resized_im.size[0] >= width
-    assert resized_im.size[1] == height
+    assert resized_im.size[1] <= height
 
 
 def test_resize_ratio_box_smaller_than_ratio_im():
@@ -35,5 +35,5 @@ def test_resize_ratio_box_smaller_than_ratio_im():
     width = 230
     im = Image.open('static/images/annie.jpg')
     resized_im = resize(im, width, height)
-    assert resized_im.size[0] == width
+    assert resized_im.size[0] <= width
     assert resized_im.size[1] >= height
