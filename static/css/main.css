@@ -1,5 +1,6 @@
 .container{
     max-width: 800px;
+    margin-bottom: 20px;
 }
 
 img{
@@ -9,4 +10,8 @@ img{
 }
 .annie{
     margin-top: 19px;
+}
+
+.picture-column{
+    padding-top: 76px;
 }
